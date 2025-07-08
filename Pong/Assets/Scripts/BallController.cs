@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Vector2 myVelocity;
+
     void Start()
     {
-        
+        // Set velocity to the left
+        rb.linearVelocity = myVelocity;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
