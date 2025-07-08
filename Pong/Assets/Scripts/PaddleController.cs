@@ -3,8 +3,11 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeedAI = 2.5f;
     [SerializeField] private float yBorder;
     [SerializeField] private bool isPlayer1;
+    [SerializeField] private bool isAIControlled;
+    [SerializeField] private Transform ballTransform;
 
     private float yPosition;
     private Vector3 myPosition;
@@ -32,16 +35,36 @@ public class PaddleController : MonoBehaviour
 
     void Update()
     {
-        // Get input from the user
-        if (Input.GetKey(keyUp))
+        if (!isPlayer1)
         {
-            // Move up
-            yPosition += moveSpeed * Time.deltaTime;
+            if (Input.GetKey(keyUp) || Input.GetKey(keyDown))
+            {
+                isAIControlled = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                isAIControlled = true;
+            }
         }
-        else if (Input.GetKey(keyDown))
+
+        if (isAIControlled)
         {
-            // Move down
-            yPosition -= moveSpeed * Time.deltaTime;
+            yPosition = Mathf.Lerp(yPosition, ballTransform.position.y, moveSpeedAI * Time.deltaTime);   
+        }
+        else
+        {
+            // Get input from the user
+            if (Input.GetKey(keyUp))
+            {
+                // Move up
+                yPosition += moveSpeed * Time.deltaTime;
+            }
+            else if (Input.GetKey(keyDown))
+            {
+                // Move down
+                yPosition -= moveSpeed * Time.deltaTime;
+            }
         }
 
         // Clamp my Y position

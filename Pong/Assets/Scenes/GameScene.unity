@@ -221,8 +221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveSpeedAI: 3
   yBorder: 4.1
   isPlayer1: 1
+  isAIControlled: 0
+  ballTransform: {fileID: 0}
 --- !u!61 &397439797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -601,8 +604,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  moveSpeedAI: 3
   yBorder: 4.1
   isPlayer1: 0
+  isAIControlled: 1
+  ballTransform: {fileID: 1790467080}
 --- !u!212 &952625381
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -995,7 +1001,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1790467081}
-  myVelocity: {x: -1, y: 0.5}
   moveSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
