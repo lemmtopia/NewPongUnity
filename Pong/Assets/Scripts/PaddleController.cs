@@ -4,7 +4,8 @@ public class PaddleController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float yBorder;
-    [SerializeField] private float yPosition;
+
+    private float yPosition;
     private Vector3 myPosition;
 
     void Start()
